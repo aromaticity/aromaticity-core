@@ -1,0 +1,27 @@
+{
+  "name": "aromaticity-core",
+  "version": "1.0.0",
+  "description": "The core of aromaticity.",
+  "main": "dist/main.js",
+  "types": "lib",
+  "homepage": "https://aromaticity.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aromaticity/aromaticity-core.git"
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "start": "node dist/main.js",
+    "dev": "npm run-script build && npm start"
+  },
+  "author": "Giulio De Matteis <giuliodematteis@icloud.com>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "@types/node-fetch": "^2.5.7",
+    "node-fetch": "^2.6.1",
+    "openchemlib": "^7.2.3"
+  }
+}
