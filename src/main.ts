@@ -7,6 +7,10 @@ function molFromSmiles(smiles: string){
     return OCL.Molecule.fromSmiles(smiles);
 }
 
+export function molToSmiles(mol: any){
+    return  mol.toSmiles();
+}
+
 export function getAcceptor(smiles: string){
     return new OCL.MoleculeProperties(molFromSmiles(smiles)).acceptorCount; 
 }

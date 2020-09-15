@@ -1,7 +1,7 @@
 {
   "name": "aromaticity-core",
-  "version": "1.0.0",
-  "description": "The core of aromaticity.",
+  "version": "1.0.1",
+  "description": "The core of aromaticity. All the functions for existing and future applications. ",
   "main": "dist/main.js",
   "types": "lib",
   "homepage": "https://aromaticity.io",
