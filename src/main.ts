@@ -7,6 +7,10 @@ function molFromSmiles(smiles: string){
     return OCL.Molecule.fromSmiles(smiles);
 }
 
+export function molFileToMol(molFileText: string){
+    return OCL.Molecule.fromMolfile(molFileText);
+}
+
 export function molToSmiles(mol: any){
     return  mol.toSmiles();
 }
