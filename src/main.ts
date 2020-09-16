@@ -58,9 +58,9 @@ export function getLogS(smiles: string){
 export function getMolFile(smiles: string, isV2000: boolean = false){
     var mol = molFromSmiles(smiles);
     if(!isV2000){
-      return mol.toMolfile();
+      return mol.toMolfile().replace('Actelion Java MolfileCreator 1.0', 'aromaticity');
     }else{
-      return mol.toMolfileV3();
+      return mol.toMolfileV3().replace('Actelion Java MolfileCreator 2.0', 'aromaticity');;
     }
 }
 
