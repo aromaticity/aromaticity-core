@@ -60,7 +60,7 @@ export function getMolFile(smiles: string, isV2000: boolean = false){
     if(!isV2000){
       return mol.toMolfile().replace('Actelion Java MolfileCreator 1.0', 'aromaticity');
     }else{
-      return mol.toMolfileV3().replace('Actelion Java MolfileCreator 2.0', 'aromaticity');;
+      return mol.toMolfileV3().replace('Actelion Java MolfileCreator 2.0', 'aromaticity');
     }
 }
 
