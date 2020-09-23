@@ -95,8 +95,8 @@ export function getStereoCenter(smiles: string){
     return molFromSmiles(smiles).getStereoCenterCount();
 }
   
-export function getSVG(smiles: string){
-    return molFromSmiles(smiles).toSVG(400, 400);
+export function getSVG(smiles: string, width: number = 400, height: number = 400){
+    return molFromSmiles(smiles).toSVG(width, height);
 }
 
 export function getWeight(smiles: string){

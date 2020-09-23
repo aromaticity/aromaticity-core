@@ -29,5 +29,5 @@ aromaticity is being rebuilt and that will be the core package for <a href="http
 |`getPolarSurfaceArea(smiles: string): number`|Returns the Polar Surface Area.|
 |`getRotatableBond(smiles: string): number`|Return the Rotatable Bonds Number.|
 |`getStereoCenter(smiles: string): number`|Returns the Stereo Centers Number.|
-|`getSVG(smiles: string): string`|Returns the SVG.|
+|`getSVG(smiles: string, width: number = 400, height: number = 400): string`|Returns the SVG.|
 |`getWeight(smiles: string): number`|Returns the Molecular Weight.|
