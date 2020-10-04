@@ -10,8 +10,9 @@ aromaticity is being rebuilt and that will be the core package for <a href="http
 
 |Function|Description|
 |---|---|
-|`molFileToMol(molFileText: string): Molecule`|Returns the Molecule of the given MolFile (`V2000` and `V3000` MDL Molfile are both accepted.|
-|`molToSmiles(mol: MolFile): string`|Returns the SMILES of the given Molecule.|
+|`molFileToMol(molFileText: string): Molecule` `molFromMolFile(molFileText: string): Molecule`|Returns the Molecule of the given MolFile (`V2000` and `V3000` MDL Molfile are both accepted.|
+|`molToSmiles(mol: Molecule: string` `smilesFromMol(mol: Molecule): string`|Returns the SMILES of the given Molecule.|
+|`molFromSmiles(SMILES: string): Molecule` `smilesToMol(SMILES: string): Molecule`|Returns the Molecule of the given SMILES.|
 
 ### Properties
 

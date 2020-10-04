@@ -1,17 +1,25 @@
 import OCL from 'openchemlib/full';
 import fetch from 'node-fetch';
 
+const windowFetch = window.fetch.bind(window);
+
 enum nmr { H, C };
 
-function molFromSmiles(smiles: string){
+export var molFromSmiles: Function, smilesToMol: Function;
+
+molFromSmiles = smilesToMol = function(smiles: string){
     return OCL.Molecule.fromSmiles(smiles);
 }
 
-export function molFileToMol(molFileText: string){
+export var molFileToMol: Function, molFromMolFile: Function;
+
+molFileToMol = molFromMolFile = function(molFileText: string){
     return OCL.Molecule.fromMolfile(molFileText);
 }
 
-export function molToSmiles(mol: any){
+export var molToSmiles: Function, smilesFromMol: Function;
+
+molToSmiles = smilesFromMol = function(mol: any){
     return  mol.toSmiles();
 }
 
@@ -41,7 +49,7 @@ export function getFormula(smiles: string, isHTML: boolean = false){
 }
 
 export function getIUPACName(smiles: string, cb: Function){
-    fetch(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/${smiles}/property/IUPACName/JSON`)
+    windowFetch(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/${smiles}/property/IUPACName/JSON`)
         .then((res: any) => res.json())
         .then((data: any) => { cb(data.PropertyTable.Properties[0].IUPACName); } )
         .catch((error: string) => { console.error(error) })
@@ -63,25 +71,6 @@ export function getMolFile(smiles: string, isV2000: boolean = false){
       return mol.toMolfileV3().replace('Actelion Java MolfileCreator 2.0', 'aromaticity');
     }
 }
-
-/*
-export function getNMRSpectra(smiles: string, type: nmr, cb: Function){
-    let predictorAtom = predictor.fetchProton();
-    
-    if(type == nmr.H){
-      predictorAtom = predictor.fetchProton();
-    }else{
-      predictorAtom = predictor.fetchCarbon();
-    }
-    
-      Promise.all([
-        predictor.spinus(getMolFile(smiles)),
-        predictorAtom
-      ])
-      .then((res) => { cb(res[0]) })
-      .catch((err) => console.log(err));
-}
-*/
 
 export function getPolarSurfaceArea(smiles: string){
     return new OCL.MoleculeProperties(molFromSmiles(smiles)).polarSurfaceArea;
