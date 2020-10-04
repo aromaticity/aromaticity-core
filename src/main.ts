@@ -1,8 +1,6 @@
 import OCL from 'openchemlib/full';
 import fetch from 'node-fetch';
 
-const windowFetch = window.fetch.bind(window);
-
 enum nmr { H, C };
 
 export var molFromSmiles: Function, smilesToMol: Function;
@@ -48,11 +46,19 @@ export function getFormula(smiles: string, isHTML: boolean = false){
     }
 }
 
-export function getIUPACName(smiles: string, cb: Function){
-    windowFetch(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/${smiles}/property/IUPACName/JSON`)
+export function getIUPACName(smiles: string, cb: Function, isCLI: Boolean = false){
+    if(isCLI){
+        fetch(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/${smiles}/property/IUPACName/JSON`)
         .then((res: any) => res.json())
         .then((data: any) => { cb(data.PropertyTable.Properties[0].IUPACName); } )
         .catch((error: string) => { console.error(error) })
+    }else{
+        const windowFetch = window.fetch.bind(window);
+        windowFetch(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/${smiles}/property/IUPACName/JSON`)
+            .then((res: any) => res.json())
+            .then((data: any) => { cb(data.PropertyTable.Properties[0].IUPACName); } )
+            .catch((error: string) => { console.error(error) })
+    }
 }
 
 export function getLogP(smiles: string){
