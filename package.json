@@ -1,6 +1,6 @@
 {
   "name": "aromaticity-core",
-  "version": "1.0.8",
+  "version": "1.5.0",
   "description": "The core of aromaticity. All the functions for existing and future applications. ",
   "main": "dist/main.js",
   "types": "lib",
@@ -12,16 +12,18 @@
   "scripts": {
     "build": "tsc -p .",
     "start": "node dist/main.js",
-    "dev": "npm run-script build && npm start"
+    "test": "node -r esm test/test.js",
+    "dev": "npm run-script build && npm test"
   },
   "author": "Giulio De Matteis <giuliodematteis@icloud.com>",
   "license": "GPL-3.0",
   "devDependencies": {
+    "esm": "^3.2.25",
     "typescript": "^4.0.2"
   },
   "dependencies": {
     "@types/node-fetch": "^2.5.7",
-    "node-fetch": "^2.6.1",
+    "axios": "^0.20.0",
     "openchemlib": "^7.2.3"
   }
 }
