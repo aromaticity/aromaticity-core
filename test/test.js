@@ -1,10 +1,10 @@
 // Import dependecies
-import { Molecule } from '../dist/main';
+import { Molecule, PubChem, Property } from '../dist/main';
 
 // Use the Constructor to build a Molecule
-var mol = new Molecule('CCCO');
+var mol = new Molecule('/Users/themagiulio/Desktop/untitled.mol');
 
 // Compute properties or query PubChem
-mol.IUPACName((name) => {
-    console.log(name);
-});
+PubChem('[Ca++]', Property.Charge, (res) => {
+    console.log(res);
+})
