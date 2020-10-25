@@ -1,7 +1,7 @@
 import OCL from 'openchemlib/full';
 import axios from 'axios';
 
-export function PubChem(input : {searchInput: string, searchBy: string},properties: Property[]|Property, cb: Function){
+export function PubChem(input : {searchInput: string, searchBy: string}, properties: Property[]|Property, cb: Function){
     let req = '';
 
     if(Array.isArray(properties)){
@@ -15,14 +15,18 @@ export function PubChem(input : {searchInput: string, searchBy: string},properti
     }else{
         req = properties.toString();
     }
-    
+
     axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/${input.searchBy}/${input.searchInput}/property/${req}/JSON`)
         .then((res: any) => {
             let data = res.data['PropertyTable']['Properties'][0];
             if(Array.isArray(properties)){
                 cb(data);
             }else{
-                cb(data[properties]);
+                if(properties === Property.CID){
+                    cb(data['CID']);
+                }else{
+                    cb(data[properties]);
+                }
             }
         });
 
@@ -117,6 +121,7 @@ export interface MoleculeProps {
 }
 
 export enum Property {
+    CID = 'CanonicalSMILES',
     MolecularFormula = 'MolecularFormula',
     MolecularWeight = 'MolecularWeight',
     CanonicalSMILES = 'CanonicalSMILES',
