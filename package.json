@@ -1,6 +1,6 @@
 {
   "name": "aromaticity-core",
-  "version": "1.6.0",
+  "version": "1.6.3",
   "description": "The core of aromaticity. All the functions for existing and future applications.",
   "main": "dist/main.js",
   "types": "lib",
@@ -23,7 +23,6 @@
   "dependencies": {
     "@types/fs-extra": "^9.0.2",
     "axios": "^0.20.0",
-    "fs-extra": "^9.0.1",
     "openchemlib": "^7.2.3"
   }
 }

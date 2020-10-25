@@ -12,7 +12,8 @@ For more information visit: <a href="https://aromaticity.io/core">https://aromat
 ## Docs
 - <a href="#compute-molecule-properties">Compute Molecule Properties</a>
     - <a href="#constructor">Constructor</a>
-    -  <a href="#molecule-properties">Molecule Properties</a>
+    - <a href="#molecule-properties">Molecule Properties</a>
+    - <a href="#molfile">Molfile</a>
 - <a href="#query-pubchem">Query PubChem</a>
     - <a href="#query">Query</a>
     - <a href="#fetched-properties">Fetched Properties</a>
@@ -23,7 +24,7 @@ For more information visit: <a href="https://aromaticity.io/core">https://aromat
 
 ### Constructor
 
-`new Molecule(SMILES: string || MolfilePath: string)`
+`new Molecule(SMILES: string)`
 
 ### Molecule Properties
 
@@ -44,6 +45,13 @@ For more information visit: <a href="https://aromaticity.io/core">https://aromat
 |`weight: number`|Returns the Molecular Weight.|
 |`toMolfile(isV2000: boolean = false): string`|Return the MolFile.|
 |`toSMILES(): string`|Returns the SMILES.|
+
+### Molfile
+
+|Function|Description|
+|---|---|
+|`molFileToMol(Molfile: string): Molecule`|Returns Molecule from Molfile.|
+|`molFileToSmiles(Molfile: string): string`|Returns SMILES from Molfile.|
 
 ## Query PubChem
 

@@ -1,6 +1,5 @@
 import OCL from 'openchemlib/full';
 import axios from 'axios';
-import fs from 'fs-extra';
 
 export function PubChem(smiles: string, properties: Property[]|Property, cb: Function){
     let req = '';
@@ -18,7 +17,7 @@ export function PubChem(smiles: string, properties: Property[]|Property, cb: Fun
     }
 
     axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/${smiles}/property/${req}/JSON`)
-        .then((res) => {
+        .then((res: any) => {
             let data = res.data['PropertyTable']['Properties'][0];
             if(Array.isArray(properties)){
                 cb(data);
@@ -27,6 +26,14 @@ export function PubChem(smiles: string, properties: Property[]|Property, cb: Fun
             }
         });
 
+}
+
+export function molFileToMol(molfile: string){
+    return OCL.Molecule.fromMolfile(molfile);
+}
+
+export function molFileToSmiles(molfile: string){
+    return molFileToMol(molfile).toSmiles();
 }
 
 export const Molecule = function(this: MoleculeProps, input: string) {
@@ -86,11 +93,7 @@ export const Molecule = function(this: MoleculeProps, input: string) {
         }
     }
     
-    if(fs.existsSync(input) && fs.lstatSync(input).isFile()){
-        this.setProperties(OCL.Molecule.fromMolfile(fs.readFileSync(input, 'utf-8')));
-    }else{
-        this.setProperties(OCL.Molecule.fromSmiles(input));
-    }
+    this.setProperties(OCL.Molecule.fromSmiles(input));
     
 }
 
