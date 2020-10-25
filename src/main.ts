@@ -1,7 +1,7 @@
 import OCL from 'openchemlib/full';
 import axios from 'axios';
 
-export function PubChem(smiles: string, properties: Property[]|Property, cb: Function){
+export function PubChem(input : {searchInput: string, searchBy: string},properties: Property[]|Property, cb: Function){
     let req = '';
 
     if(Array.isArray(properties)){
@@ -15,8 +15,8 @@ export function PubChem(smiles: string, properties: Property[]|Property, cb: Fun
     }else{
         req = properties.toString();
     }
-
-    axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/${smiles}/property/${req}/JSON`)
+    
+    axios.get(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/${input.searchBy}/${input.searchInput}/property/${req}/JSON`)
         .then((res: any) => {
             let data = res.data['PropertyTable']['Properties'][0];
             if(Array.isArray(properties)){
