@@ -1,6 +1,7 @@
 # aromaticity-core
 
 [![npm version](https://badge.fury.io/js/aromaticity-core.svg)](https://badge.fury.io/js/aromaticity-core)
+[![Build Status](https://travis-ci.com/aromaticity/aromaticity-core.svg?branch=master)](https://travis-ci.com/aromaticity/aromaticity-core)
 
 The core of aromaticity.
 
